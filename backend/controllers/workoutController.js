@@ -1,5 +1,6 @@
 const Workout = require('../models/workoutModel');
 const mongoose = require('mongoose');
+const axios = require('axios');
 
 // get all workouts
 const getWorkouts = async (req, res) => {
@@ -25,6 +26,34 @@ const getWorkout = async (req, res) => {
       return res.status(404).json({error: 'Workout not found'})
   }
   res.status(200).json(workout);
+}
+
+const getExerciseSuggestions = async (req, res) => {
+  const { name } = req.query;
+  if (!name) return res.status(200).json([]);
+  const options = {
+    method: 'GET',
+    url: `https://exercisedb.p.rapidapi.com/exercises/name/${name}`,
+    headers: {
+      'X-RapidAPI-Key': process.env.EXERCISE_DB_KEY,
+      'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await axios.request(options);
+
+    const cleanedData = response.data.map(ex => ({
+      name: ex.name.charAt(0).toUpperCase() + ex.name.slice(1), // Proper casing
+      gifUrl: ex.gifUrl,
+      bodyPart: ex.bodyPart
+    }));
+
+    res.status(200).json(cleanedData);
+  } catch (error) {
+    console.error("RapidAPI Error:", error.message);
+    res.status(500).json({ error: 'Failed to fetch pro exercise list' });
+  }
 }
 
 // create a new workout
@@ -95,5 +124,6 @@ module.exports = {
   getWorkouts,
   getWorkout,
   deleteWorkout,
-  updateWorkout
+  updateWorkout,
+  getExerciseSuggestions
 }

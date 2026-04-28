@@ -5,10 +5,14 @@ const {
   getWorkouts,
   getWorkout,
   deleteWorkout,
-  updateWorkout
+  updateWorkout,
+  getExerciseSuggestions
 } = require('../controllers/workoutController');
 
 const router = express.Router();
+
+// GET suggestion workouts from wger API
+router.get('/exercises', getExerciseSuggestions);
 
 // GET all workouts
 router.get('/',  getWorkouts);
@@ -24,5 +28,6 @@ router.delete('/:id', deleteWorkout);
 
 // UPDATE a new workout
 router.patch('/:id', updateWorkout);
+
 
 module.exports = router;

@@ -1,0 +1,251 @@
+/* --- Google Fonts Import (Poppins for a modern aesthetic) --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* --- Global Variables & Root Styles --- */
+:root {
+    /* Main brand colors & shades for depth */
+    --primary: #1aac83; /* User's preferred primary color */
+    --primary-dark: #148f6d; /* Deeper shade for titles/contrast */
+    --primary-light: #e0f5f0; /* Very light shade for subtle backgrounds/hover */
+
+    /* Generic semantic colors (softened) */
+    --error: #e7195a;
+    --error-light: #ffeef3; /* For generic background error messages/borders */
+
+    /* Global layout & text colors */
+    --bg-global: #fafafb; /* Subtle, cool grey-white for cleanliness */
+    --text-main: #2d3436; /* Soft black for readability */
+    --text-muted: #636e72; /* Subtle grey for dates/lesser details */
+}
+
+/* Base resets & typography */
+body {
+    margin: 0;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-global);
+    color: var(--text-main);
+    line-height: 1.6; /* Better readability */
+    letter-spacing: -0.01em; /* Subtle premium spacing */
+}
+
+/* --- Header & Layout --- */
+header {
+    background: #fff;
+    padding: 8px 0; /* Shorter header */
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+}
+
+header .container {
+    max-width: 1200px; /* Reduced max-width for tighter feel */
+    margin: 0 auto;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Style the brand name/logo area */
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+header a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+/* Highlight the primary color in the name */
+header a span {
+    color: var(--primary);
+}
+
+header a:hover {
+    color: var(--primary-dark);
+}
+
+
+.pages {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.home {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 60px;
+}
+
+.workout-details {
+    background: #fff;
+    border-radius: 10px;
+    margin: 15px 0;
+    padding: 25px;
+    position: relative;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.04), 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.workout-details:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+.workout-details h4 {
+    margin: 0 0 12px 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.workout-details p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+
+.workout-details p strong {
+    font-weight: 600;
+}
+
+.workout-details p span.detail-value {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+
+.workout-details p.detail-date {
+    font-size: 0.8rem;
+    margin-top: 15px;
+    color: #b2bec3;
+}
+
+.workout-details span.delete-icon {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    background: #a9d3fd;
+    padding: 8px;
+    border-radius: 50%;
+    color: var(--text-main);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.workout-details span.delete-icon:hover {
+    background-color: var(--error-light);
+    color: var(--error);
+}
+
+form.create {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+}
+
+form.create h3 {
+    margin: 0 0 25px 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+form.create label {
+    display: block;
+    margin: 0 0 8px 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+form.create input {
+    display: block;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form.create input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(26, 172, 131, 0.1);
+}
+
+
+form.create input.error {
+    border: 1px solid var(--error);
+    background-color: #fff9fa;
+}
+
+form.create input.error:focus {
+    box-shadow: 0 0 0 3px rgba(231, 25, 90, 0.1);
+}
+
+
+form.create input {
+    margin-bottom: 20px;
+}
+
+
+form.create button {
+    background: var(--primary);
+    border: 0;
+    color: #fff;
+    padding: 14px 20px;
+    font-family: inherit;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 100%;
+    transition: background-color 0.2s ease, filter 0.2s ease;
+}
+
+form.create button:hover {
+    background-color: var(--primary-dark);
+    filter: brightness(1.05);
+}
+
+/* Error message styling */
+div.error {
+    padding: 12px;
+    background-color: var(--error-light);
+    border: 1px solid var(--error);
+    color: var(--error);
+    border-radius: 6px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+
+@media (max-width: 900px) {
+    .home {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .home .workouts {
+        order: 2;
+    }
+
+    .home form.create {
+        order: 1;
+    }
+}
